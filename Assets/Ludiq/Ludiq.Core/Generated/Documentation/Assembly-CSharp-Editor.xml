@@ -1,0 +1,440 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Assembly-CSharp-Editor</name>
+    </assembly>
+    <members>
+        <member name="F:BuildReportTool.SavedOptions.SaveType">
+            <summary>
+            Where build reports are saved to: in user's My Documents, or outside the project folder.
+            </summary>
+        </member>
+        <member name="F:BuildReportTool.SavedOptions.FilterToUseInt">
+            <summary>
+            Use file filters from global config, or use the ones embedded in the saved build report file.
+            </summary>
+        </member>
+        <member name="F:BuildReportTool.AssetList.SortType.ImportedSizeOrRawSize">
+            <summary>
+            Try imported size. If imported size is unavailable (N/A) use raw size.
+            </summary>
+        </member>
+        <member name="F:BuildReportTool.BuildInfo.scenes">
+            <summary>
+            Temporary variable to hold all scenes in build.
+            Needed for report generation but is not saved to the build report.
+            </summary>
+        </member>
+        <member name="M:BuildReportTool.BuildInfo.FixReport">
+            <summary>
+            This is called right after generating a build report.
+            </summary>
+        </member>
+        <member name="T:BuildReportTool.SizePart">
+            <summary>
+            Represents one entry in an asset list.
+            </summary>
+        </member>
+        <member name="F:BuildReportTool.SizePart.Name">
+            <summary>
+            The filename with path, but relative to project's Assets folder
+            </summary>
+        </member>
+        <member name="F:BuildReportTool.SizePart.Percentage">
+            <summary>
+            How much the asset takes up space in the final build, in percentage.
+            Value will be from the editor log if possible. If not, it will be calculated manually.
+            </summary>
+        </member>
+        <member name="F:BuildReportTool.SizePart.Size">
+            <summary>
+            For Unused Assets, this is the raw file size as existing in the assets folder, expressed in human-readable format
+            For Used Assets, this is the size upon being built, as found in the Editor log.
+            </summary>
+        </member>
+        <member name="F:BuildReportTool.SizePart.SizeBytes">
+            <summary>
+            The <see cref="F:BuildReportTool.SizePart.Size"/> converted into bytes.
+            </summary>
+        </member>
+        <member name="F:BuildReportTool.SizePart.ImportedSize">
+            <summary>
+            The file size as imported into Unity, expressed in human-readable format.
+            If this SizePart is for an asset that has no imported size (e.g. built-in asset)
+            this will be empty.
+            </summary>
+        </member>
+        <member name="F:BuildReportTool.SizePart.ImportedSizeBytes">
+            <summary>
+            The imported file size, expressed in bytes.
+            </summary>
+        </member>
+        <member name="F:BuildReportTool.SizePart.SizeInAssetsFolder">
+            <summary>
+            For Used Assets, this is the file size as existing in the assets folder, expressed in human-readable format.
+            </summary>
+        </member>
+        <member name="F:BuildReportTool.SizePart.SizeInAssetsFolderBytes">
+            <summary>
+            The <see cref="F:BuildReportTool.SizePart.SizeInAssetsFolder"/> in bytes
+            </summary>
+        </member>
+        <member name="F:BuildReportTool.SizePart.DerivedSize">
+             <summary>
+             In cases where we don't have exact values of file size (we just got it from
+             editor log as string, which was converted to readable format already).
+             
+             Expressed in bytes (but with fractions because of the inaccuracies).
+            
+             This applies to the "Used Assets" list
+             </summary>
+        </member>
+        <member name="P:BuildReportTool.SizePart.UsableSize">
+            <summary>
+            Helper function to get the proper raw file size
+            </summary>
+        </member>
+        <member name="P:BuildReportTool.SizePart.ImportedSizeOrRawSize">
+            <summary>
+            Return value of imported size, but if unavailable, will return raw size instead.
+            </summary>
+        </member>
+        <member name="M:BuildReportTool.ReportGenerator.CreateReport">
+            <summary>
+            Create a Build Report. The Editor log needs to have build data for this to work, so call this after <see cref="M:UnityEditor.BuildPipeline.BuildPlayer(UnityEditor.EditorBuildSettingsScene[],System.String,UnityEditor.BuildTarget,UnityEditor.BuildOptions)"/>.
+            </summary>
+            <returns>The absolute path and filename of the created Build Report XML file, or null if no Build Report was created.</returns>
+        </member>
+        <member name="M:BuildReportTool.ReportGenerator.GetCompressedSizeReadingFromLog">
+            <summary>
+            Note: This doesn't work anymore in Unity 5.3.2
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Fungus.EditorUtils.AssetModProcessor">
+            <summary>
+            Prevents saving of selected blocks and commands to avoid version control conflicts.
+            </summary>
+        </member>
+        <member name="T:Fungus.EditorUtils.BlockInspector">
+            <summary>
+            Temp hidden object which lets us use the entire inspector window to inspect the block command list.
+            </summary>
+        </member>
+        <member name="T:Fungus.EditorUtils.BlockInspectorEditor">
+            <summary>
+            Custom editor for the temp hidden object.
+            </summary>
+        </member>
+        <member name="M:Fungus.EditorUtils.BlockInspectorEditor.UpdateWindowHeight">
+            <summary>
+            In Unity 5.4, Screen.height returns the pixel height instead of the point height
+            of the inspector window. We can use EditorGUIUtility.currentViewWidth to get the window width
+            but we have to use this horrible hack to find the window height.
+            For one frame the windowheight will be 0, but it doesn't seem to be noticeable.
+            </summary>
+        </member>
+        <member name="T:Fungus.EditorUtils.CustomGUI">
+            <summary>
+            Utility functions for drawing custom UI in the editor.
+            </summary>
+        </member>
+        <member name="T:Fungus.EditorUtils.DialogInputEditor">
+            <summary>
+            Dummy class to avoid compile errors for users upgrading from Fungus 2 to Fungus 3 via unitypackage.
+            </summary>
+        </member>
+        <member name="M:Fungus.EditorUtils.EditorExtensions.FindDerivedTypesFromAssembly(System.Reflection.Assembly,System.Type,System.Boolean)">
+            <summary>
+            FindDerivedTypesFromAssembly allows a user to query all of types derived from a
+            particular Type at runtime.
+            Example usage:
+                foreach (System.Type st in EditorUtility.FindDerivedTypesFromAssembly(System.Reflection.Assembly.GetAssembly(typeof(BaseTimelineEvent)), typeof(BaseTimelineEvent), true))
+            </summary>
+            <param name="assembly">The assembly to search in</param>
+            <param name="baseType">The base Type from which all returned Types derive</param>
+            <param name="classOnly">If true, only class Types will be returned</param>
+            <returns></returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:Fungus.EditorUtils.EditorExtensions.FindDerivedTypes(System.Type,System.Boolean)" -->
+        <member name="M:Fungus.EditorUtils.EventHandlerEditor.GetEventHandlerInfo(System.Type)">
+            <summary>
+            Returns the class attribute info for an event handler class.
+            </summary>
+        </member>
+        <member name="M:Fungus.EditorUtils.FlowchartEditor.NullTargetCheck">
+            <summary>
+            When modifying custom editor code you can occasionally end up with orphaned editor instances.
+            When this happens, you'll get a null exception error every time the scene serializes / deserialized.
+            Once this situation occurs, the only way to fix it is to restart the Unity editor.
+            As a workaround, this function detects if this editor is an orphan and deletes it. 
+            </summary>
+        </member>
+        <member name="M:Fungus.EditorUtils.FlowchartWindow.ShowNotification(System.String)">
+            <summary>
+            Displays a temporary text alert in the center of the Flowchart window.
+            </summary>
+        </member>
+        <member name="T:Fungus.EditorUtils.FungusEditorPreferences">
+            <summary>
+            Shows Fungus section in the Edit->Preferences in unity allows you to configure Fungus behaviour
+            
+            ref https://docs.unity3d.com/ScriptReference/PreferenceItem.html
+            </summary>
+        </member>
+        <member name="T:Fungus.HierarchyIcons">
+            <summary>
+            Static class that hooks into the hierachy changed and item gui callbacks to put
+            a fungus icon infront of all GOs that have a flowchart on them
+            
+            Reference; http://answers.unity3d.com/questions/431952/how-to-show-an-icon-in-hierarchy-view.html
+            
+            TODO
+            There is what appears like a bug but is currently out of our control. When Unity reloads the built scripts it fires
+            InitializeOnLoad but doesn't then fire HierarchyChanged so icons disappear until a change occurs
+            </summary>
+        </member>
+        <member name="M:Fungus.LuaBindingsEditor.GetUniqueKey(Fungus.LuaBindings,System.String,System.Int32)">
+            <summary>
+            Returns a new binding key that is guaranteed to be a valid Lua variable name and
+            not to clash with any existing binding in the list.
+            </summary>
+        </member>
+        <member name="M:Fungus.LuaBindingsEditor.PopulateBoundTypes(Fungus.LuaBindings,UnityEditor.SerializedObject)">
+            <summary>
+            Update the list of bound types on the LuaBindings object.
+            </summary>
+        </member>
+        <member name="M:Fungus.LuaBindingsEditor.AddAllSubTypes(System.Collections.Generic.HashSet{System.Type},System.Type)">
+            <summary>
+            Adds the type to the set of types, and then uses reflection to add
+            all public fields, properties and methods to the set of types.
+            </summary>
+        </member>
+        <member name="M:Fungus.LuaBindingsEditor.AddSubType(System.Collections.Generic.HashSet{System.Type},System.Type)">
+            <summary>
+            Adds a single type to the type set.
+            IEnumerable and IEnumerator types are handled specially.
+            </summary>
+        </member>
+        <member name="M:Fungus.MenuItems.SpawnPrefab(System.String,System.Boolean)">
+            <summary>
+            Spawns a prefab in the scene based on it's filename in a Resources folder in the project.
+            If centerInScene is true then the object will be placed centered in the view window with z = 0.
+            If centerInScene is false the the object will be placed at (0,0,0)
+            </summary>
+        </member>
+        <member name="M:Fungus.MenuItems.CreateAsset``1">
+            <summary>
+            Create new asset from <see cref="T:UnityEngine.ScriptableObject"/> type with unique name at
+            selected folder in project window. Asset creation can be cancelled by pressing
+            escape key when asset is initially being named.
+            </summary>
+            <typeparam name="T">Type of scriptable object.</typeparam>
+        </member>
+        <member name="M:Fungus.MenuItems.SpawnInfoText">
+            <summary>
+            Create an info text object which displays help info in the top left of the sceen.
+            </summary>
+        </member>
+        <member name="T:TiaanDotCom.Unity3D.EditorTools.LineEndingsEditMenu">
+            <summary>
+            Implements menu items for the Unity Editor to perform
+            end-of-line conversion and fix issues such as for the
+            following: "There are inconsistent line endings in the
+            'Assets/.../*.cs' script. Some are Mac OS X (UNIX) and
+            some are Windows. This might lead to incorrect line
+            numbers in stacktraces and compiler errors."
+            </summary>
+        </member>
+        <member name="T:SfxrGenerator">
+            <summary>
+            Implements a Unity window to generate sounds and their parameters with usfxr.
+            </summary>
+            <remarks>
+            Open the generator from the Window menu. You can then create a sound and
+            when you are ready, copy the equivalent parameters to the clipboard to be
+            used inside your game.
+            </remarks>
+        </member>
+        <member name="T:SfxrGenerator.WaveType">
+            <summary>
+            Open the usfxr's sound-effects generator window.
+            </summary>
+        </member>
+        <member name="M:SfxrGenerator.RenderParameters(SfxrParams)">
+            <summary>
+            Renders the specified SFXR parameters in the editor.
+            </summary>
+            <param name="parameters">The current parameters to be rendered.</param>
+            <remarks>
+            This method is called automatically for the standalone editor window
+            when a game-object with parameters is selected.  However, this public
+            method can also be called by CustomEditor implementations for specific
+            game-components to render the editor in the Inspector window
+            (see UnityEditor.Editor for details).  Also, this method can be used
+            from PropertyDrawer implementations; future releases of the code may
+            include such a default drawer (once SfxrSynth and SfxrParams supports
+            native serialization for Unity).
+            </remarks>
+        </member>
+        <member name="M:Movinarc.TreeView.AddNodeFromPath(System.String,System.Collections.Generic.List{System.String},System.Collections.Generic.List{System.String})">
+            <summary>
+            Adds the node from path.
+            </summary>
+            <param name="path">Path.</param>
+            <param name = "dirList"></param>
+        </member>
+        <member name="M:Movinarc.TreeView.PathHierarchy(System.String)">
+             <summary>
+             Paths the hierarchy.
+             in:
+             Assets/1/2/3 
+            
+             out: 
+             Assets
+             Assets/1
+             Assets/1/2
+             Assets/1/2/3
+             </summary>
+             <param name="path">Path.</param>
+        </member>
+        <member name="T:HutongGames.PlayMakerEditor.CallMethodEditor">
+            <summary>
+            TODO: 
+            Keep parameters when changing method signature?
+            Copy/paste parameter values?
+            Ability to add custom menu item to Action Settings menu?
+            </summary>
+        </member>
+        <member name="T:HutongGames.PlayMakerEditor.AssetGUIDs">
+            <summary>
+            Collect Playmaker Asset GUIDs as static strings
+            Used instead of asset paths (user can move files)
+            Also can be used to check for installation problems
+            </summary>
+        </member>
+        <member name="T:HutongGames.PlayMakerEditor.BaseGuidedTourWindow">
+            <inheritdoc />
+            <summary>
+            Base class for a Guided Tour Window 
+            Uses GuidedTour to organize topics
+            Uses HtmlText for help text with links etc.
+            TODO: Remove some dependencies and move to HutongGames.Editor so we can use in other projects
+            </summary>
+        </member>
+        <member name="M:HutongGames.PlayMakerEditor.BaseGuidedTourWindow.DoGuidedTourGUI">
+            <summary>
+            Render the guidedTour
+            </summary>
+        </member>
+        <member name="M:HutongGames.PlayMakerEditor.BaseGuidedTourWindow.GetUrl(HutongGames.PlayMakerEditor.WikiPages)">
+            <summary>
+            Shorter command for convenience (used a lot)
+            </summary>
+        </member>
+        <member name="T:HutongGames.PlayMakerEditor.EditorStartupPrefs">
+            <summary>
+            Stores per project settings.
+            EditorPrefs are universal so not well suited to per project settings.
+            NOTE: This class is included as source and cannot be accessed from dll
+            So it's intended for use by startup and install scripts.
+            </summary>
+        </member>
+        <member name="M:HutongGames.PlayMakerEditor.FsmEditorWindow.OpenWindow">
+            <summary>
+            Open the Fsm Editor and optionally show the Welcome Screen
+            </summary>
+        </member>
+        <member name="M:HutongGames.PlayMakerEditor.FsmEditorWindow.OpenWindow(PlayMakerFSM)">
+            <summary>
+            Open the Fsm Editor and select an Fsm Component
+            </summary>
+        </member>
+        <member name="M:HutongGames.PlayMakerEditor.FsmEditorWindow.OpenWindow(FsmTemplate)">
+            <summary>
+            Open the Fsm Editor and select an Fsm Component
+            </summary>
+        </member>
+        <member name="M:HutongGames.PlayMakerEditor.FsmEditorWindow.IsOpen">
+            <summary>
+            Is the Fsm Editor open?
+            </summary>
+        </member>
+        <member name="M:HutongGames.PlayMakerEditor.FsmEditorWindow.Initialize">
+            <summary>
+            Delay initialization until first OnGUI to avoid interfering with runtime system initialization.
+            </summary>
+        </member>
+        <member name="T:HutongGames.PlayMakerEditor.PlayMakerDefines">
+            <summary>
+            Adds Playmaker defines to project
+            Other tools can now use #if PLAYMAKER
+            Package as source code so user can remove or modify
+            </summary>
+        </member>
+        <member name="T:HutongGames.PlayMakerEditor.PlayMakerEditorStartup">
+            <summary>
+            Manages initialization of PlayMaker Editor classes
+            Before Unity 5.4 a lot of this was done in EditorWindow constructors.
+            In Unity 5.4+ this is not allowed and throws an error.
+            Unity API calls are also not allowed in constructors of Serializable classes.
+            So instead we do it all here in a non-Serializable class.
+            </summary>
+        </member>
+        <member name="T:HutongGames.PlayMakerEditor.PlayMakerGuidedTour">
+            <summary>
+            Guided Tour of the various PlayMaker editor windows and UI.
+            NOTE: You can extend BaseGuidedTourWindow to make your own Guided Tour windows!
+            </summary>
+        </member>
+        <member name="M:HutongGames.PlayMakerEditor.PlayMakerGuidedTour.Open">
+            <summary>
+            Open as Utility Window
+            </summary>
+        </member>
+        <member name="T:HutongGames.PlayMakerEditor.PlayMakerWelcomeWindow">
+            <summary>
+            Welcome Window with getting started shortcuts
+            </summary>
+        </member>
+        <member name="T:FsmComponentInspector">
+            <summary>
+            Custom inspector for PlayMakerFSM
+            </summary>
+        </member>
+        <member name="M:FsmComponentInspector.OpenInEditor(PlayMakerFSM)">
+            <summary>
+            Open the specified FSM in the Playmaker Editor
+            </summary>
+        </member>
+        <member name="M:FsmComponentInspector.OpenInEditor(HutongGames.PlayMaker.Fsm)">
+            <summary>
+            Open the specified FSM in the Playmaker Editor
+            </summary>
+        </member>
+        <member name="M:FsmComponentInspector.OpenInEditor(UnityEngine.GameObject)">
+            <summary>
+            Open the first PlayMakerFSM on a GameObject in the Playmaker Editor
+            </summary>
+        </member>
+        <member name="M:FsmComponentInspector.BuildFsmVariableList">
+            <summary>
+            The fsmVariables list contains easily editable references to FSM variables
+            (Similar in concept to SerializedProperty)
+            </summary>
+        </member>
+        <member name="M:FsmComponentInspector.RefreshTemplate">
+            <summary>
+            A template can change since it was selected.
+            This method refreshes the UI to reflect any changes
+            while keeping any variable overrides that the use has made
+            </summary>
+        </member>
+        <member name="M:FsmComponentInspector.OnSceneGUI">
+            <summary>
+            Actions can use OnSceneGUI to display interactive gizmos
+            </summary>
+        </member>
+    </members>
+</doc>

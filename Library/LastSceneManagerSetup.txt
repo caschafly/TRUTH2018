@@ -1,0 +1,4 @@
+sceneSetups:
+- path: Assets/A_truth_files/Scenes/Truth_Game_new_final.unity
+  isLoaded: 1
+  isActive: 1

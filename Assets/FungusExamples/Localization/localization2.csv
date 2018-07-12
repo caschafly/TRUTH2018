@@ -1,0 +1,6 @@
+Key,Description,Standard,CN,FR
+SAY.LocalizationDemo.1.,,Select Language,选择语言,Select Language
+MENU.LocalizationDemo.2,,English,英语,English
+MENU.LocalizationDemo.3,,Chinese,中文,Chinese
+MENU.LocalizationDemo.15,,French,法语,French
+SAY.LocalizationDemo.12.,,This text is in English,这里是中文,Ce texte est en français

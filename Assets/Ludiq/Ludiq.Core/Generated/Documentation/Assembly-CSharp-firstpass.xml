@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Assembly-CSharp-firstpass</name>
+    </assembly>
+    <members>
+        <member name="M:UnityEngine.Purchasing.IAPButton.ProcessPurchase(UnityEngine.Purchasing.PurchaseEventArgs)">
+            Invoked to process a purchase of the product associated with this button
+        </member>
+        <member name="M:UnityEngine.Purchasing.IAPButton.OnPurchaseFailed(UnityEngine.Purchasing.Product,UnityEngine.Purchasing.PurchaseFailureReason)">
+            Invoked on a failed purchase of the product associated with this button
+        </member>
+        <member name="M:UnityEngine.Purchasing.IAPConfigurationHelper.PopulateConfigurationBuilder(UnityEngine.Purchasing.ConfigurationBuilder@,UnityEngine.Purchasing.ProductCatalog)">
+            Populate a ConfigurationBuilder with products from a ProductCatalog
+        </member>
+        <member name="M:UnityEngine.Purchasing.IAPListener.ProcessPurchase(UnityEngine.Purchasing.PurchaseEventArgs)">
+            Invoked to process a purchase of the product associated with this button
+        </member>
+        <member name="M:UnityEngine.Purchasing.IAPListener.OnPurchaseFailed(UnityEngine.Purchasing.Product,UnityEngine.Purchasing.PurchaseFailureReason)">
+            Invoked on a failed purchase of the product associated with this button
+        </member>
+        <member name="T:IAPDemo">
+            <summary>
+            An example of Unity IAP functionality.
+            To use with your account, configure the product ids (AddProduct).
+            </summary>
+        </member>
+        <member name="M:IAPDemo.OnInitialized(UnityEngine.Purchasing.IStoreController,UnityEngine.Purchasing.IExtensionProvider)">
+            <summary>
+            This will be called when Unity IAP has finished initialising.
+            </summary>
+        </member>
+        <member name="M:IAPDemo.ProcessPurchase(UnityEngine.Purchasing.PurchaseEventArgs)">
+            <summary>
+            This will be called when a purchase completes.
+            </summary>
+        </member>
+        <member name="M:IAPDemo.OnPurchaseFailed(UnityEngine.Purchasing.Product,UnityEngine.Purchasing.PurchaseFailureReason)">
+            <summary>
+            This will be called if an attempted purchase fails.
+            </summary>
+        </member>
+        <member name="M:IAPDemo.OnTransactionsRestored(System.Boolean)">
+            <summary>
+            This will be called after a call to IAppleExtensions.RestoreTransactions().
+            </summary>
+        </member>
+        <member name="M:IAPDemo.OnDeferred(UnityEngine.Purchasing.Product)">
+             <summary>
+             iOS Specific.
+             This is called as part of Apple's 'Ask to buy' functionality,
+             when a purchase is requested by a minor and referred to a parent
+             for approval.
+            
+             When the purchase is approved or rejected, the normal purchase events
+             will fire.
+             </summary>
+             <param name="item">Item.</param>
+        </member>
+    </members>
+</doc>

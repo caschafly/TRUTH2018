@@ -1,0 +1,27 @@
+Key,Description,Standard,EN
+MENU.Flowchart_Main_UI.194,,中文,Chinese
+MENU.Flowchart_Main_UI.201,,English,ENGLISH
+MENU.Flowchart_Main_UI.366,,开始怪谈,GAME START
+SETTEXT.Flowchart_Main_UI.325,,继续怪谈,CONTINUE
+MENU.Flowchart_Main_UI.514,,第一章 风暴前夜,
+MENU.Flowchart_Main_UI.465,,第二章 激情不断,
+MENU.Flowchart_Main_UI.481,,第三章,
+MENU.Flowchart_Main_UI.479,,第四章,
+MENU.Flowchart_Main_UI.477,,第五章,
+MENU.Flowchart_Main_UI.475,,第六章,
+MENU.Flowchart_Main_UI.473,,第七章,
+MENU.Flowchart_Main_UI.471,,第八章,
+MENU.Flowchart_Main_UI.503,,第九章,
+MENU.Flowchart_Main_UI.501,,终章,
+MENU.Flowchart_Main_UI.515,,返回,BACK
+MENU.Flowchart_Main_UI.571,,确定删除记录,Confirm Delete
+MENU.Flowchart_Main_UI.572,,取消删除,Cancel Delete
+SAY.Flowchart_Main_UI.621.,,你相信眼前所看到的世界么？\n那个你再熟悉不过，每天赖以生存的世界?,Do you believe in the world you see? \n The world you know well and live in every day? 
+SAY.Flowchart_Main_UI.633.,,或许这一切都只不过是梦幻泡影。\n而真相远比你看到的要触目惊心。,Maybe all this is just a pipe dream.\n The truth is far more shocking than what you see.
+SAY.Flowchart_Main_UI.622.,,这是一段纯粹虚构的故事，\n但或许透过它，你能看到世界的真相。,"It's a purely fictional story, \n but perhaps through it you can see the truth of the world."
+CHARACTER.???,,???,
+CHARACTER.王浩,故事主人公，IT软件设计师。王浩，单身，屌丝宅男。,王浩,
+CHARACTER.凯瑟琳,,凯瑟琳,
+CHARACTER.简妮,,简妮,
+CHARACTER.酒吧侍者,,酒吧侍者,
+CHARACTER.雅克布,,雅克布,
