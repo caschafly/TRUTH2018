@@ -2346,10 +2346,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: 2051.5771, y: 888.77356}
+  scrollPos: {x: 2019.2213, y: 1070.775}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
-  blockViewHeight: 275
+  blockViewHeight: 511
   zoom: 0.7417512
   scrollViewRect:
     serializedVersion: 2
@@ -2357,8 +2357,10 @@ MonoBehaviour:
     y: -1729.3505
     width: 5969.446
     height: 2818.8503
-  selectedBlocks: []
-  selectedCommands: []
+  selectedBlocks:
+  - {fileID: 1390555477}
+  selectedCommands:
+  - {fileID: 1390555463}
   variables:
   - {fileID: 1390555335}
   - {fileID: 1390555339}
@@ -6572,7 +6574,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 415
   indentLevel: 0
-  storyText: "\u8001\u4EBA\u5E76\u6CA1\u6709\u7B54\u5E94\u3002{wc}\n\u4F46\u662F\u7ED9\u4E86\u4ED6\u4E00\u4E2A\u53E4\u8463\u4F5C\u4E3A\u793C\u7269\u3002\u8FD9\u662F\u4E00\u74F6\u4ED6\u73CD\u85CF\u591A\u5E74\u7684\u4E00\u74F6\u7EA2\u8461\u8404\u9152\uFF0C{wc}\n\u74F6\u5B50\u88C5\u9970\u7684\u975E\u5E38\u7CBE\u7F8E\uFF0C\u800C\u91CC\u9762\u7684\u9152\u770B\u4E0A\u53BB\u4E5F\u6709\u5E74\u5934\u4E86\u3002{wc}\n\u8001\u4EBA\u8BF4\u8FD9\u74F6\u9152\u662F\u4ED6\u4E13\u95E8\u4E3A\u9152\u5427\u8001\u677F\u51C6\u5907\u7684\uFF0C{wc}\n\u5728\u8FD9\u91CC\u5DF2\u7ECF\u8DB3\u8DB3\u7B49\u4E8630\u5E74\u4E86\u3002"
+  storyText: "\u8001\u4EBA\u5E76\u6CA1\u6709\u7B54\u5E94\u3002{wc}\n\u4F46\u662F\u7ED9\u4E86\u4ED6\u4E00\u4E2A\u53E4\u8463\u4F5C\u4E3A\u793C\u7269\u3002\u8FD9\u662F\u4ED6\u73CD\u85CF\u591A\u5E74\u7684\u4E00\u74F6\u7EA2\u8461\u8404\u9152\uFF0C{wc}\n\u74F6\u5B50\u88C5\u9970\u7684\u975E\u5E38\u7CBE\u7F8E\uFF0C\u800C\u91CC\u9762\u7684\u9152\u770B\u4E0A\u53BB\u4E5F\u6709\u5E74\u5934\u4E86\u3002{wc}\n\u8001\u4EBA\u8BF4\u8FD9\u74F6\u9152\u662F\u4ED6\u4E13\u95E8\u4E3A\u9152\u5427\u8001\u677F\u51C6\u5907\u7684\uFF0C{wc}\n\u5728\u8FD9\u91CC\u5DF2\u7ECF\u8DB3\u8DB3\u7B49\u4E8630\u5E74\u4E86\u3002"
   description: 
   character: {fileID: 1657167121}
   portrait: {fileID: 21300000, guid: 7601cc83a340e43b0bf323e3ed240dac, type: 3}
@@ -40193,12 +40195,12 @@ Prefab:
     - target: {fileID: 224289191131222430, guid: a2b61e23012494271924db72d0bbe048,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: -0.000057289864
+      value: 0.000045766712
       objectReference: {fileID: 0}
     - target: {fileID: 224289191131222430, guid: a2b61e23012494271924db72d0bbe048,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0.00004158951
+      value: 0.000013254308
       objectReference: {fileID: 0}
     - target: {fileID: 224474719923530556, guid: a2b61e23012494271924db72d0bbe048,
         type: 2}
